@@ -8,6 +8,7 @@
 #include <iostream>
 #include <ctime>
 #include <algorithm>
+#include <string>
 #include <assert.h>
 
 using std::cin;
@@ -19,6 +20,7 @@ using std::max;
 using std::min;
 using std::swap;
 using std::copy;
+using std::string;
 
 namespace SortingHelper {
     template <typename T>
@@ -109,6 +111,18 @@ namespace SortingHelper {
             cout << arr[i] << " ";
         }
         cout << endl;
+    }
+
+    template <typename T>
+    void testSort(string name, void(*sort)(T*, int), T* arr, int size) {
+        cout << "Sort Algorithm Name: " << name << endl;
+
+        clock_t startTime = clock();
+        sort(arr, size);
+        clock_t endTime = clock();
+        assert(isSorted(arr, size));
+        cout << "Time: " << (double)(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;
+        return;
     }
 }
 
